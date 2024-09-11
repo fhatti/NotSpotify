@@ -3,15 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:notSpotify="clr-namespace:NotSpotify"
+        xmlns:viewModels="clr-namespace:NotSpotify.ViewModels"
         mc:Ignorable="d"
         Background="#222222"
-        WindowStyle="None"
         ResizeMode="NoResize"
-        Title="MainView" Height="800" Width="450">
+        Title="NotSpotify" Height="800" Width="450">
 
     <Window.DataContext>
-        <notSpotify:MainView />
+        <viewModels:MainViewModel />
     </Window.DataContext>
 
     <DockPanel>
@@ -24,6 +23,7 @@
                    -wrapping-paper-background_136321-1180.jpg"
                    Opacity=".3"
                    Stretch="UniformToFill" />
+            
             <StackPanel VerticalAlignment="Bottom" Margin="8">
                 <TextBlock Text="PLAYLIST"
                            Foreground="White"
@@ -39,12 +39,21 @@
                            Foreground="LightGray"
                            FontSize="12"
                            FontWeight="Bold" />
+
+                <Button Width="100"
+                        Height="25"
+                        Content="Load songs"
+                        Margin="10"
+                        Command="{Binding  LoadDataCommand}"
+                        Style="{StaticResource {x:Type Button}}" />
+                
             </StackPanel>
         </Grid>
 
-        <ListViewItem Background="#25252525" ScrollViewer.CanContentScroll="False">
-
-        </ListViewItem>
+        <ListView ScrollViewer.CanContentScroll="False"
+                  ItemsSource="{Binding Songs}"
+                  Style="{StaticResource ListStyle}"
+                  Background="#25252225" />
 
     </DockPanel>
 </Window>
