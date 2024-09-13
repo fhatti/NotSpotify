@@ -1,2 +1,56 @@
 ﻿.idea 
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+[Bb]in/
+[Oo]bj/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+*.swp
+
+# Rider
+.idea/
+
+# Visual Studio Code
+.vscode/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Environment-specific files
 .env
+
+# Sensitive data
+*.key
+*.pem
+*.p12
+
+# NuGet packages
+*.nupkg
+.nuget/
+packages/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.orig
+
+# Node.js modules (if applicable)
+node_modules/
+git
