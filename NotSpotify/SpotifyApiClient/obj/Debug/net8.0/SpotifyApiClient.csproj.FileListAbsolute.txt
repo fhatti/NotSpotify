@@ -1,0 +1,13 @@
+C:\Users\v.purcariu\personalprojects\NotSpotify\NotSpotify\SpotifyApiClient\bin\Debug\net8.0\SpotifyApiClient.deps.json
+C:\Users\v.purcariu\personalprojects\NotSpotify\NotSpotify\SpotifyApiClient\bin\Debug\net8.0\SpotifyApiClient.dll
+C:\Users\v.purcariu\personalprojects\NotSpotify\NotSpotify\SpotifyApiClient\bin\Debug\net8.0\SpotifyApiClient.pdb
+C:\Users\v.purcariu\personalprojects\NotSpotify\NotSpotify\SpotifyApiClient\obj\Debug\net8.0\SpotifyApiClient.csproj.AssemblyReference.cache
+C:\Users\v.purcariu\personalprojects\NotSpotify\NotSpotify\SpotifyApiClient\obj\Debug\net8.0\SpotifyApiClient.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\v.purcariu\personalprojects\NotSpotify\NotSpotify\SpotifyApiClient\obj\Debug\net8.0\SpotifyApiClient.AssemblyInfoInputs.cache
+C:\Users\v.purcariu\personalprojects\NotSpotify\NotSpotify\SpotifyApiClient\obj\Debug\net8.0\SpotifyApiClient.AssemblyInfo.cs
+C:\Users\v.purcariu\personalprojects\NotSpotify\NotSpotify\SpotifyApiClient\obj\Debug\net8.0\SpotifyApiClient.csproj.CoreCompileInputs.cache
+C:\Users\v.purcariu\personalprojects\NotSpotify\NotSpotify\SpotifyApiClient\obj\Debug\net8.0\SpotifyApiClient.sourcelink.json
+C:\Users\v.purcariu\personalprojects\NotSpotify\NotSpotify\SpotifyApiClient\obj\Debug\net8.0\SpotifyApiClient.dll
+C:\Users\v.purcariu\personalprojects\NotSpotify\NotSpotify\SpotifyApiClient\obj\Debug\net8.0\refint\SpotifyApiClient.dll
+C:\Users\v.purcariu\personalprojects\NotSpotify\NotSpotify\SpotifyApiClient\obj\Debug\net8.0\SpotifyApiClient.pdb
+C:\Users\v.purcariu\personalprojects\NotSpotify\NotSpotify\SpotifyApiClient\obj\Debug\net8.0\ref\SpotifyApiClient.dll

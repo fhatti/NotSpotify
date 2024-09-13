@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotSpotify", "NotSpotify\NotSpotify.csproj", "{87D84711-1153-4E4C-8BD1-9D0F8F30465A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApiClient", "SpotifyApiClient\SpotifyApiClient.csproj", "{5AD116E9-8971-4C59-8AEA-CD17730D6C94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{87D84711-1153-4E4C-8BD1-9D0F8F30465A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87D84711-1153-4E4C-8BD1-9D0F8F30465A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87D84711-1153-4E4C-8BD1-9D0F8F30465A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AD116E9-8971-4C59-8AEA-CD17730D6C94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AD116E9-8971-4C59-8AEA-CD17730D6C94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AD116E9-8971-4C59-8AEA-CD17730D6C94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AD116E9-8971-4C59-8AEA-CD17730D6C94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

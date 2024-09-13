@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using NotSpotify.Models;
 using RestSharp;
 
@@ -11,69 +10,55 @@ namespace NotSpotify.ViewModels;
 public class MainViewModel : ObservableObject
 {
     private List<Track.Item>? songs;
+    private readonly SpotifyApiClient.Services.SpotifyApiClient spotifyApiClient;
 
     public List<Track.Item>? Songs
     {
         get => this.songs;
         set => this.SetProperty(ref this.songs, value);
     }
+
     public IAsyncRelayCommand LoadDataCommand { get; }
 
     public MainViewModel()
     {
-        this.Songs = new List<Track.Item>();
-        this.LoadDataCommand = new AsyncRelayCommand(this.populateUiAsync);
+        var clientId = Environment.GetEnvironmentVariable("ID")
+                       ?? throw new InvalidOperationException("Client ID not set in environment variables.");
+        var clientSecret = Environment.GetEnvironmentVariable("SECRET")
+                           ?? throw new InvalidOperationException("Client Secret not set in environment variables.");
+
+        this.spotifyApiClient = new SpotifyApiClient.Services.SpotifyApiClient(clientId, clientSecret);
+
+        this.songs = new List<Track.Item>();
+        this.LoadDataCommand = new AsyncRelayCommand(this.loadNewReleasesAsync);
     }
 
-    private static async Task<Track?> getDataFromApiAsync()
+    private async Task loadNewReleasesAsync()
     {
-        var id = Environment.GetEnvironmentVariable("ID");
-        var secret = Environment.GetEnvironmentVariable("SECRET");
+        var token = await this.spotifyApiClient.GetAccessTokenAsync();
 
-        // Get Access Token
-        using var client = new RestClient("https://accounts.spotify.com");
-        var request = new RestRequest("api/token", Method.Post);
+        var client = new RestClient("https://api.spotify.com");
+        var request = new RestRequest("v1/browse/new-releases", Method.Get);
+        request.AddHeader("Authorization", $"Bearer {token}");
         request.AddHeader("cache-control", "no-cache");
-        request.AddHeader("content-type", "application/x-www-form-urlencoded");
-        request.AddParameter("application/x-www-form-urlencoded",
-            $"grant_type=client_credentials&client_id={id}&client_secret={secret}",
-            ParameterType.RequestBody);
+        request.AddHeader("Accept", "application/json");
+        request.AddHeader("Content-Type", "application/json");
+
         var response = await client.ExecuteAsync(request);
-        if (!response.IsSuccessful)
+        if (response.IsSuccessful)
         {
-            throw new Exception($"Error retrieving token: {response.Content}");
-        }
+            var result = JsonConvert.DeserializeObject<Track>(response.Content!);
 
-        dynamic resp = JObject.Parse(response.Content!);
-        string token = resp.access_token;
-
-        // Fetch 
-        using (var apiClient = new RestClient("https://api.spotify.com"))
-        {
-            var apiRequest = new RestRequest("v1/browse/new-releases", Method.Get);
-            apiRequest.AddHeader("authorization", $"Bearer {token}");
-            apiRequest.AddHeader("cache-control", "no-cache");
-            apiRequest.AddHeader("Accept", "application/json");
-            apiRequest.AddHeader("Content-Type", "application/json");
-
-            var apiResponse = await apiClient.ExecuteAsync(apiRequest);
-            if (apiResponse.IsSuccessful)
+            if (result?.Album?.Items == null)
             {
-                return JsonConvert.DeserializeObject<Track>(apiResponse.Content!);
+                throw new Exception("Failed to retrieve or parse the track data.");
             }
 
-            throw new Exception($"Error fetching new releases: {apiResponse.Content}");
+            this.Songs = result.Album.Items.ToList();
         }
-    }
-
-    private async Task populateUiAsync()
-    {
-        var result = await getDataFromApiAsync();
-
-        if (result?.Album?.Items == null)
+        else
         {
-            throw new Exception("Failed to retrieve or parse the track data.");
+            throw new Exception($"Error fetching new releases: {response.Content}");
         }
-        this.Songs = result.Album.Items.ToList();
     }
 }
