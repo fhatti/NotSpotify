@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "zmkSr3fAMorlmK3vX8WJ0bJ7FGb4IfFYpOgIqh/k94zB84Hi2sr0TZrOfPpIkjtTZMop74UPM7JGRC/OIb3GqA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\v.purcariu\\personalprojects\\NotSpotify\\NotSpotify\\SpotifyApiClient\\SpotifyApiClient.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\v.purcariu\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\v.purcariu\\.nuget\\packages\\restsharp\\112.0.0\\restsharp.112.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
